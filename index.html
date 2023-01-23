@@ -1,0 +1,278 @@
+TypeScript practice codes
+
+// let n:null = null;
+// let total:number = undefined;
+// let istrue:boolean = null;
+// let sagar:string = undefined
+// console.log(n,total,istrue,sagar)
+
+// let courses:string[] = ['one','two','three']
+// let couse:Array<number> = [1,2,3]
+// console.log(courses,couse)
+
+// let person:[string,number] =['vicky',1,]
+// console.log(person)
+
+// enum direction{north =4,south,east,west}
+
+// let sunrise:direction = direction.east
+// console.log(direction.south,direction.east)
+
+// let apple:unknown = 'string';
+
+
+// console.log(apple,(apple as string).toUpperCase())
+
+// let a;
+// a= true
+
+// let b = 20;
+// b = 'hello'
+
+// function checking (num:number,num2 :number):number{
+//   return num+num2
+// }
+// console.log(checking(5,5))
+
+// //optional parameter must be at last
+
+
+// function checking1 (num:number,num2 ?:number):number{
+//   if(num2)
+//   return num+num2
+//   else{
+//     return num
+//   }
+// }
+// console.log(checking1(5))
+
+
+// function add(one:number,two?:number):number{
+//   if(two)
+//   return one + two
+//   else{
+//     return one
+//   }
+// }
+
+// function greetings (name:string|null|undefined){
+//   if(name){console.log(name)}
+//   else{console.log('Simply hello')}
+// }
+
+// greetings(undefined)
+
+// console.log(add(5))
+// type details ={name:string,id:number,place:string,greet:(data:string)=>void}
+
+// let student:details ={
+//   name:'vicky',
+//   id:2,
+//   place:'chennai',
+//   greet(para){console.log('hello Im  ' + para)}
+// }
+
+
+// console.log(student)
+// student.greet('vicky')
+
+//1.Any
+
+// let anything:any = 'Vicky'
+// anything = 1
+// anything = true
+
+// anything.name
+// anything()
+// console.log(
+// (anything).toUpperCase())
+
+// let nothing;
+// nothing = 1
+// nothing = "gugan"
+
+// 2.Unknow
+
+// let x:unknown = 'Hello'
+// x= 1
+// x.name
+// x()
+// x.toUpperCase()
+
+// // throws error unlike any
+// // here we forcing x as string to get awy from error for uppercase method
+
+
+// console.log((x as string).toUpperCase())
+
+
+// 3.Array
+
+// let names: readonly string[]=['vicky','gopi','sathish']
+// let fnames:Array<string> = ['vicky','gopi','sathish']
+// names.push('ikky') 
+// // readonly so it throws error
+
+// 4.Tuple(typing array with predifined length and type of index)
+
+// let student:[string,number,string] = ['vicky',2018101045,"Agri"]  order should be in the same order
+// Named tuples:
+
+// let student:[name:string,id:number,dept:string] = ['vicky',2018101045,"Agri"] 
+
+// 4.object types
+
+// type Profile = {name:string,id?:number}
+
+// let student:Profile = {name:'vicky',id:45}
+// // let student1:Profile = {name:'vicky'} optinal
+
+
+// console.log(student,student1)
+
+// indexSignaature:
+
+// let car:{[name:string]:number} = {}
+// car.bmw = 10000
+// car.ferrari = 15000
+// car.audi = 70000
+
+// console.log(car)
+
+// 5.Enum(special class that represents group of constants)
+
+// enum Direction {north =0,south,east,west} //Initialized enum
+
+// console.log(Direction.south)
+// let sunrise:Direction = Direction.east
+// console.log(sunrise)
+ 
+// enum Direction {north =100,south =50,east = 200,west=250} //fully initialized
+
+// enum Direction {north ='north',south ='south',east = 'east',west='west'} //String enum
+
+// 6.Interfaces
+
+// interface Car{name:string,price:number,model:number}
+
+// let car:Car ={name:'bmw',price:20000,model:2022}
+
+// interface Vehicle extends Car{wheel:string}
+
+// let vehicle:Vehicle ={name:"pulsar",price:400,model:2022,wheel:'twowheel'}
+// console.log(car,vehicle)
+
+
+// 7.Union types (multi type - when value can be more than single type)
+
+// function add(one:number|string,two:number|string):number|string{
+//   return one + two
+  
+//   }
+
+
+// console.log(add('Vicky ','Kumar'))
+
+//union type error
+
+
+// 8.function
+
+//return type
+
+// function check (para:number):number{
+//   return para;
+// }
+
+// console.log(check(5))
+
+// //void - if nothing gonna return
+// function sayHello():void{
+//   console.log('Hey!..Hello..!')
+// }
+
+// sayHello()
+
+// //parameter
+// //optional parameter
+// //default parameter
+// // named parameter
+
+// function add ({a,b}:{a:number,b:number}){
+//   return a/b
+// }
+
+// add(365637/36635) //doubt note
+
+//Rest parameter
+
+// function total(a:number,b:number,...rest:number[]):number{
+//   return a+b+rest.reduce((p,c)=> (p+c),0)
+// }
+
+// console.log(total(5,7,3,4,5,6,7,8,9,0,7,6,5,4,3))
+
+//type alias
+
+// type dummy = (para:string)=>void
+
+// let check:dummy = (para)=>{console.log('hello' + para )}
+
+// console.log( check('vicky'))
+
+// 9.Casting - as/<>
+
+// let x:unknown = 'hello';
+
+// console.log(
+// ((x as string).toUpperCase()))
+// <string>x - check doubt
+
+
+// let studentName:string = 'vicky';
+// console.log(studentName.toUpperCase())
+
+// console.log(((x as unknown) as string).length) - forceCasting(convert to unknow first then to desired type to avoid errors)
+
+// 10.Class
+ 
+// class Vehicle {
+//  private name:string;
+//   price:number;
+//   constructor(name:string,price:number){
+//     this.name = name;
+//     this.price = price;
+//   }
+//   buy(){
+//     console.log('willing to buy')
+//   }
+// }
+
+// let vehicle = new Vehicle('bmw',1000)
+// console.log(vehicle)
+// vehicle.buy()
+
+// //inheritance
+
+// class Twowheeler extends Vehicle{
+//   speed:number;
+// constructor(name:string,price:number,speed:number){
+//   super(name,price);
+//   this.speed = speed;
+// }
+// doubleDisc(){console.log('Has double disc')}
+
+//   }
+
+//   let bike = new Twowheeler('pulsar',300,240)
+//   console.log(bike)
+//   bike.doubleDisc()
+
+
+//   // console.log(bike.name) - couldnt acces(private - only can access within class)
+//   // protected - like private but can use to its inheritance
+
+//   function identity <T>( arg1:T,arg2:T):T{
+//     return arg1
+//   }
+//   //have to look much clearly
